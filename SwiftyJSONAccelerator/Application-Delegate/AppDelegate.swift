@@ -19,4 +19,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     shouldPresent notification: NSUserNotification) -> Bool {
       return true
   }
+  
+  func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if !flag {
+            sender.windows.last?.makeKeyAndOrderFront(self)
+            NSApp.activate(ignoringOtherApps: true)
+            return false
+        }
+        return true
+    }
 }
